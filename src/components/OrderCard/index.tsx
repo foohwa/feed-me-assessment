@@ -3,7 +3,6 @@ import { OrderWithBot } from '../../store/SharedSlice'
 import { CookingPot } from 'lucide-react'
 import { OrderProgress } from '../../store/OrderStore'
 import { classNames } from '../../utils'
-import Rive from '@rive-app/react-canvas'
 
 const COOKING_TIME = 10000
 
