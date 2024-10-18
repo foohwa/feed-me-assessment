@@ -9,7 +9,7 @@ export interface Bot {
 export interface BotSlice {
   bots: Bot[]
   increaseBot: () => Bot
-  decreaseBot: () => void
+  decreaseBot: () => Bot | undefined
   assignOrderToBot: (orderId: string, botId?: string) => void
   removeOrderFromBot: (orderId: string, botId: string) => void
   totalBots: () => number
@@ -28,8 +28,24 @@ export const createBotSlice: StateCreator<
     return newBot
   },
   decreaseBot: () => {
-    // const disposingBot = get().bots.slice(1)
+    console.log([...get().bots])
+    if (get().bots.length === 0) {
+      console.warn('No bots exist')
+      return
+    }
+
+    const idleBots = get().bots.filter((bot) => !bot.currentOrderId)
+    const activeBots = get().bots.filter((bot) => bot.currentOrderId)
+
+    if (idleBots.length > 0) {
+      set((state) => ({ bots: state.bots.slice(1) }))
+      return
+    }
+
+    const firstBot = activeBots.at(0)
+    if (!firstBot) return
     set((state) => ({ bots: state.bots.slice(1) }))
+    return firstBot
   },
   assignOrderToBot: (orderId: string, botId?: string) =>
     set((state) => {

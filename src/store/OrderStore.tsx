@@ -20,6 +20,7 @@ export interface OrderSlice {
   orders: Order[]
   addOrder: (type: OrderType) => Order
   startOrder: (orderId: string) => void
+  restoreOrder: (orderId: string) => void
   completeOrder: (orderId: string) => void
 }
 
@@ -69,6 +70,19 @@ export const createOrderSlice: StateCreator<
               ...order,
               progress: 'IN_PROGRESS',
               startedAt: formatISO(new Date())
+            }
+          : order
+      )
+    }))
+  },
+  restoreOrder: (orderId: string) => {
+    set((state) => ({
+      orders: state.orders.map((order) =>
+        order.id === orderId
+          ? {
+              ...order,
+              progress: 'PENDING',
+              startedAt: undefined
             }
           : order
       )

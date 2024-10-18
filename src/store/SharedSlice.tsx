@@ -64,10 +64,13 @@ export const createSharedSlice: StateCreator<
     }
   },
   handleBotDecrease: () => {
-    get().decreaseBot()
+    const bot = get().decreaseBot()
 
-    // do we wait until the bot finish the order only then we remove it
-    // or we immediately stop the progress and set back to pending
+    if (bot === undefined || !bot.currentOrderId) {
+      return
+    }
+
+    get().restoreOrder(bot.currentOrderId)
 
     // when decrease bot, we must start from normal instead of VIP (unfair world)
   }
