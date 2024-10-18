@@ -18,36 +18,43 @@ export const ControlPanel = () => {
   }
 
   return (
-    <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-      <div className="flex flex-wrap gap-2">
-        <button
-          className="bg-yellow-500 px-3 py-2 text-black hover:bg-yellow-600"
-          onClick={() => handleAddNewOrder('NORMAL')}
-        >
-          New Normal Order
-        </button>
-        <button
-          className="bg-red-500  px-3 py-2 text-white hover:bg-red-600"
-          onClick={() => handleAddNewOrder('VIP')}
-        >
-          New VIP Order
-        </button>
-        <button
-          className="border-yellow-500 px-3 py-2 text-yellow-500 hover:bg-yellow-500 hover:text-black"
-          onClick={() => handleIncreaseBot()}
-        >
-          + Bot
-        </button>
-        <button
-          className="border-red-500 px-3 py-2 text-red-500 hover:bg-red-500 hover:text-white"
-          onClick={() => handleDecreaseBot()}
-        >
-          - Bot
-        </button>
+    <>
+      <div className="my-4 flex flex-col items-center justify-between gap-4 md:flex-row">
+        <div className="grid w-full grid-cols-2 grid-rows-2 gap-2 md:grid-cols-4 md:grid-rows-1">
+          <button
+            type="button"
+            className="w-full rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+            onClick={() => handleAddNewOrder('NORMAL')}
+          >
+            New Normal Order
+          </button>
+          <button
+            type="button"
+            className="w-full rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+            onClick={() => handleAddNewOrder('VIP')}
+          >
+            New VIP Order 👑
+          </button>
+          <button
+            type="button"
+            className="w-full rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+            onClick={() => handleIncreaseBot()}
+          >
+            Increase 🤖
+          </button>
+          <button
+            type="button"
+            className="w-full rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+            onClick={() => handleDecreaseBot()}
+          >
+            Decrease 🤖
+          </button>
+        </div>
       </div>
-      <div className="text-lg font-semibold">
-        Active Bots: <span className="text-red-600">{totalBots}</span>
+
+      <div className="text-end font-normal">
+        Active Bots 🤖: <span className="text-gray-600">{totalBots}</span>
       </div>
-    </div>
+    </>
   )
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { OrderWithBot } from '../../store/SharedSlice'
 import { CookingPot } from 'lucide-react'
 import { OrderProgress } from '../../store/OrderStore'
@@ -12,8 +12,6 @@ type OrderCardProps = {
 }
 
 export const OrderCard = ({ order, onClick }: OrderCardProps) => {
-  const [progress, setProgress] = useState(0)
-
   console.log('recreated')
 
   return (
@@ -80,21 +78,25 @@ type OrderProgressBarProps = {
 }
 
 const OrderProgressBar = ({ progress }: OrderProgressBarProps) => {
-  const progressBarWidth =
-    progress === 'PENDING'
-      ? '0%'
-      : progress === 'IN_PROGRESS'
-        ? '50%'
-        : progress === 'COMPLETED'
-          ? '0%'
-          : '0%'
+  const [progressBarWidth, setProgressBarWidth] = useState<string>('0%')
+
+  useEffect(() => {
+    const progressBarWidth =
+      progress === 'PENDING'
+        ? '0%'
+        : progress === 'IN_PROGRESS'
+          ? '50%'
+          : progress === 'COMPLETED'
+            ? '0%'
+            : '0%'
+
+    setProgressBarWidth(progressBarWidth)
+  }, [progress])
 
   return (
     <div>
       <h4 className="sr-only">Status</h4>
-      {/*<p className="text-sm font-medium text-gray-900">*/}
-      {/*  Migrating MySQL database...*/}
-      {/*</p>*/}
+      <p className="text-sm font-medium text-gray-900">Waiting for bot...</p>
       <div aria-hidden="true">
         <div className="overflow-hidden rounded-full bg-gray-200">
           <div
