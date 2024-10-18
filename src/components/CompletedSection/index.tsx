@@ -1,4 +1,5 @@
 import { usePosStore } from '../../store/PosStore'
+import { OrderCard } from '../OrderCard'
 
 export const CompletedSection = () => {
   const { orders } = usePosStore()
@@ -19,7 +20,7 @@ export const CompletedSection = () => {
             })
             .map((order) => (
               <li key={order.id}>
-                {order.id} : {order.type} {order.progress}
+                <OrderCard order={order} />
               </li>
             ))}
         </ul>
