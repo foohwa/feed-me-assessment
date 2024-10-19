@@ -19,7 +19,6 @@ export const createSharedSlice: StateCreator<
 > = (set, get) => ({
   handleNewOrder: (type: OrderType) => {
     const newOrder = get().addOrder(type)
-    console.log(newOrder)
 
     const availableBots = get().bots.filter((bot) => !bot.currentOrderId)
 

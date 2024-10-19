@@ -28,7 +28,6 @@ export const createBotSlice: StateCreator<
     return newBot
   },
   decreaseBot: () => {
-    console.log([...get().bots])
     if (get().bots.length === 0) {
       console.warn('No bots exist')
       return
@@ -62,8 +61,6 @@ export const createBotSlice: StateCreator<
         ? availableBots.find((bot) => bot.id === botId)
         : availableBots[availableBots.length - 1]
 
-      console.log(latestBot)
-
       return {
         bots: state.bots.map((bot) =>
           bot.id === latestBot?.id
@@ -87,8 +84,6 @@ export const createBotSlice: StateCreator<
           bots: state.bots
         }
       }
-
-      console.log(isBotExist)
 
       return {
         bots: state.bots.map((bot) =>

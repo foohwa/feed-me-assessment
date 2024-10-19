@@ -1,10 +1,10 @@
 import { usePosStore } from '../../store/PosStore'
 import { OrderWithBot } from '../../store/SharedSlice'
 import { OrderCard } from '../OrderCard'
+import { useEffect } from 'react'
 
 export const InProgressSection = () => {
   const { orders, bots, handleCompleteOrder } = usePosStore()
-  // const order = usePosStore((state) => state.allOrders())
 
   const inProgressOrders: OrderWithBot[] = orders
     .map((order) => {
@@ -20,17 +20,27 @@ export const InProgressSection = () => {
       (order) =>
         order.progress === 'PENDING' || order.progress === 'IN_PROGRESS'
     )
-  // .sort((firstOrder, secondOrder) => {
-  //   return secondOrder.progress === 'IN_PROGRESS' ? 1 : -1
-  // })
 
-  const onOrderComplete = (order: OrderWithBot) => {
-    if (order.progress === 'PENDING') {
-      return
+  useEffect(() => {
+    let timeOut: NodeJS.Timeout | null = null
+
+    if (inProgressOrders.length > 0) {
+      const orderToProcess = inProgressOrders[0]
+      timeOut = setTimeout(() => {
+        if (orderToProcess.progress === 'PENDING') {
+          return
+        }
+
+        handleCompleteOrder(orderToProcess.id, orderToProcess.botId!)
+      }, 10000)
     }
 
-    handleCompleteOrder(order.id, order.botId!)
-  }
+    return () => {
+      if (timeOut != null) {
+        clearTimeout(timeOut)
+      }
+    }
+  }, [inProgressOrders, handleCompleteOrder])
 
   return (
     <>
@@ -44,10 +54,7 @@ export const InProgressSection = () => {
           >
             {inProgressOrders.map((order) => (
               <li key={order.id}>
-                <OrderCard
-                  order={order}
-                  onClick={() => onOrderComplete(order)}
-                />
+                <OrderCard order={order} />
               </li>
             ))}
           </ul>
