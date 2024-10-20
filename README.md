@@ -2,6 +2,9 @@
 
 This is the assessment app for the feedMe
 
+# Demo
+https://feed-me-assessment.netlify.app/
+
 ## What is inside?
 
 In this project here is the tools I used:
