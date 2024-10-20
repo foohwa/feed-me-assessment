@@ -1,4 +1,4 @@
-import { useOrderManagementStore } from '../store/PosStore'
+import { useOrderManagementStore } from '../store/OrderManagementStore'
 import { OrderWithBot } from '../store/SharedSlice'
 import { OrderCard } from './OrderCard'
 import { useEffect } from 'react'

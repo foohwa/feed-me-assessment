@@ -1,4 +1,4 @@
-import { useOrderManagementStore } from '../store/PosStore'
+import { useOrderManagementStore } from '../store/OrderManagementStore'
 import { OrderType } from '../store/OrderStore'
 
 export const ControlPanel = () => {

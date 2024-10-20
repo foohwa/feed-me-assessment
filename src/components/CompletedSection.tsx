@@ -1,4 +1,4 @@
-import { useOrderManagementStore } from '../store/PosStore'
+import { useOrderManagementStore } from '../store/OrderManagementStore'
 import { OrderCard } from './OrderCard'
 
 export const CompletedSection = () => {
