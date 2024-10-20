@@ -1,9 +1,10 @@
-import { usePosStore } from '../../store/PosStore'
-import { OrderType } from '../../store/OrderStore'
+import { useOrderManagementStore } from '../store/PosStore'
+import { OrderType } from '../store/OrderStore'
 
 export const ControlPanel = () => {
-  const { handleNewOrder, handleBotIncrease, handleBotDecrease } = usePosStore()
-  const totalBots = usePosStore((state) => state.totalBots())
+  const { handleNewOrder, handleBotIncrease, handleBotDecrease } =
+    useOrderManagementStore()
+  const totalBots = useOrderManagementStore((state) => state.totalBots())
 
   const handleAddNewOrder = (type: OrderType) => {
     handleNewOrder(type)

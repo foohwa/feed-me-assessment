@@ -1,8 +1,8 @@
-import { usePosStore } from '../../store/PosStore'
-import { OrderCard } from '../OrderCard'
+import { useOrderManagementStore } from '../store/PosStore'
+import { OrderCard } from './OrderCard'
 
 export const CompletedSection = () => {
-  const { orders } = usePosStore()
+  const { orders } = useOrderManagementStore()
 
   const completedOrders = orders
     .filter((order) => order.progress === 'COMPLETED')

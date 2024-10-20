@@ -1,31 +1,23 @@
-![reactjs-vite-tailwindcss-boilerplate](https://user-images.githubusercontent.com/16243531/217138979-b854309c-4742-4275-a705-f9fec5158217.jpg)
+# Feed Me Assessment
 
-# React Tailwindcss Boilerplate build with Vite
-
-This is a boilerplate build with Vite, React 18, TypeScript, Vitest, Testing Library, TailwindCSS 3, Eslint and Prettier.
+This is the assessment app for the feedMe
 
 ## What is inside?
 
-This project uses many tools like:
+In this project here is the tools I used:
 
-- [Vite](https://vitejs.dev)
-- [ReactJS](https://reactjs.org)
-- [TypeScript](https://www.typescriptlang.org)
-- [Vitest](https://vitest.dev)
-- [Testing Library](https://testing-library.com)
-- [Tailwindcss](https://tailwindcss.com)
-- [Eslint](https://eslint.org)
-- [Prettier](https://prettier.io)
+- Vite
+- Tailwindcss
+- Prettier
+- Zustand (State Management)
 
 ## Getting Started
 
+This is how my thought process when designing out the whole flow:
+
+![img_8.png](src/assets/img_8.png)
+
 ### Install
-
-Create the project.
-
-```bash
-pnpm dlx degit joaopaulomoraes/reactjs-vite-tailwindcss-boilerplate my-app
-```
 
 Access the project directory.
 
@@ -36,7 +28,7 @@ cd my-app
 Install dependencies.
 
 ```bash
-pnpm install
+npm install
 ```
 
 Serve with hot reload at <http://localhost:5173>.
@@ -44,37 +36,3 @@ Serve with hot reload at <http://localhost:5173>.
 ```bash
 pnpm run dev
 ```
-
-### Lint
-
-```bash
-pnpm run lint
-```
-
-### Typecheck
-
-```bash
-pnpm run typecheck
-```
-
-### Build
-
-```bash
-pnpm run build
-```
-
-### Test
-
-```bash
-pnpm run test
-```
-
-View and interact with your tests via UI.
-
-```bash
-pnpm run test:ui
-```
-
-## License
-
-This project is licensed under the MIT License.

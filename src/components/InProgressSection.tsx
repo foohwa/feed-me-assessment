@@ -1,10 +1,10 @@
-import { usePosStore } from '../../store/PosStore'
-import { OrderWithBot } from '../../store/SharedSlice'
-import { OrderCard } from '../OrderCard'
+import { useOrderManagementStore } from '../store/PosStore'
+import { OrderWithBot } from '../store/SharedSlice'
+import { OrderCard } from './OrderCard'
 import { useEffect } from 'react'
 
 export const InProgressSection = () => {
-  const { orders, bots, handleCompleteOrder } = usePosStore()
+  const { orders, bots, handleCompleteOrder } = useOrderManagementStore()
 
   const inProgressOrders: OrderWithBot[] = orders
     .map((order) => {
