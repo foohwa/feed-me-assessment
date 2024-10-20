@@ -2,7 +2,7 @@ import { OrderWithBot } from '../../store/SharedSlice'
 import { CookingPot } from 'lucide-react'
 import { OrderProgress } from '../../store/OrderStore'
 import { classNames } from '../../utils'
-import * as console from 'node:console'
+import { useEffect, useState } from 'react'
 
 const COOKING_TIME = 10000
 

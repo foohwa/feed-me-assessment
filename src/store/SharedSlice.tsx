@@ -70,7 +70,5 @@ export const createSharedSlice: StateCreator<
     }
 
     get().restoreOrder(bot.currentOrderId)
-
-    // when decrease bot, we must start from normal instead of VIP (unfair world)
   }
 })
