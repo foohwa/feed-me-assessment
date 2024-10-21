@@ -69,7 +69,7 @@ export const ControlPanel = () => {
         </div>
         <div className="h-full w-40 overflow-hidden rounded-md border bg-stone-100 px-3 py-1 md:p-3">
           <dt className="truncate text-sm font-medium text-gray-500">
-            Idle Bots ⚪️
+            Idle Bots 💤
           </dt>
           <dd className="mt-1 font-semibold tracking-tight text-gray-900 md:text-3xl">
             🤖 {totalIdleBots}
