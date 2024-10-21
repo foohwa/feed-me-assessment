@@ -59,7 +59,7 @@ export const ControlPanel = () => {
       </div>
 
       <div className="my-5 flex flex-row justify-end gap-2">
-        <div className="h-full w-40 overflow-hidden rounded-md border bg-white px-3 py-1 md:p-3">
+        <div className="size-full overflow-hidden rounded-md border bg-white px-3 py-1 md:w-40 md:p-3">
           <dt className=" truncate text-sm font-medium text-gray-500">
             Active Bots 🟢
           </dt>
@@ -67,7 +67,7 @@ export const ControlPanel = () => {
             🤖 {totalActiveBots}
           </dd>
         </div>
-        <div className="h-full w-40 overflow-hidden rounded-md border bg-stone-100 px-3 py-1 md:p-3">
+        <div className="size-full overflow-hidden rounded-md border bg-stone-100 px-3 py-1 md:w-40 md:p-3">
           <dt className="truncate text-sm font-medium text-gray-500">
             Idle Bots 💤
           </dt>
