@@ -29,10 +29,10 @@ export const createOrderSlice: StateCreator<
   [],
   [],
   OrderSlice
-> = (set) => ({
+> = (set, get) => ({
   orders: [],
   addOrder: (type: OrderType) => {
-    const newOrder: Order = createNewOrder(type)
+    const newOrder: Order = createNewOrder(type, get().orders.length)
 
     set((state) => {
       const updatedOrders = [...state.orders]
@@ -103,9 +103,9 @@ export const createOrderSlice: StateCreator<
   }
 })
 
-const createNewOrder = (type: OrderType): Order => {
+const createNewOrder = (type: OrderType, length: number = 0): Order => {
   const prefix = 'ORD'
-  const randomNum = Math.floor(1000 + Math.random() * 9000)
+  const randomNum = length.toString().padStart(4, '0')
   const orderId = `${prefix}-${randomNum}`
 
   return {
