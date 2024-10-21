@@ -109,7 +109,7 @@ const OrderProgressBar = ({ progress }: OrderProgressBarProps) => {
             className="h-2 rounded-full bg-green-600 transition-all duration-500 ease-in-out"
           />
         </div>
-        <div className="mt-6 hidden text-sm font-medium text-gray-600 sm:flex sm:justify-between lg:hidden">
+        <div className="mt-6 hidden text-sm font-medium text-gray-600 sm:flex sm:justify-between">
           {stages.map((stage) => (
             <div
               key={stage}

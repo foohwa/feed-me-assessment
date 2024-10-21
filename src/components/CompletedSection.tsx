@@ -18,10 +18,7 @@ export const CompletedSection = () => {
         {!completedOrders.length ? (
           <div className=" text-black">No completed order yet</div>
         ) : (
-          <ul
-            role="list"
-            className="grid grid-cols-1 gap-x-4 gap-y-3  lg:grid-cols-2"
-          >
+          <ul role="list" className="grid grid-cols-1 gap-x-4 gap-y-3">
             {completedOrders.map((order) => (
               <li key={order.id}>
                 <OrderCard order={order} />

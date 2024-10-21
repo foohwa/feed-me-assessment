@@ -48,10 +48,7 @@ export const InProgressSection = () => {
         {!inProgressOrders.length ? (
           <div className=" text-black">No order in progress</div>
         ) : (
-          <ul
-            role="list"
-            className="grid grid-cols-1 gap-x-4 gap-y-3  lg:grid-cols-2"
-          >
+          <ul role="list" className="grid grid-cols-1 gap-x-4 gap-y-3">
             {inProgressOrders.map((order) => (
               <li key={order.id}>
                 <OrderCard order={order} />
