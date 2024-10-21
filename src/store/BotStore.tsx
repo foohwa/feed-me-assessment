@@ -12,7 +12,8 @@ export interface BotSlice {
   decreaseBot: () => Bot | undefined
   assignOrderToBot: (orderId: string, botId?: string) => void
   removeOrderFromBot: (orderId: string, botId: string) => void
-  totalBots: () => number
+  totalIdleBots: () => number
+  totalActiveBots: () => number
 }
 
 export const createBotSlice: StateCreator<
@@ -33,18 +34,25 @@ export const createBotSlice: StateCreator<
       return
     }
 
+    // Separate idle and active bots
     const idleBots = get().bots.filter((bot) => !bot.currentOrderId)
     const activeBots = get().bots.filter((bot) => bot.currentOrderId)
 
     if (idleBots.length > 0) {
-      set((state) => ({ bots: state.bots.slice(1) }))
+      const botToRemove = idleBots[idleBots.length - 1]
+      set((state) => ({
+        bots: state.bots.filter((bot) => bot !== botToRemove) // remove idle bot
+      }))
       return
     }
 
-    const firstBot = activeBots.at(0)
-    if (!firstBot) return
-    set((state) => ({ bots: state.bots.slice(1) }))
-    return firstBot
+    const botToRemove = activeBots[activeBots.length - 1]
+    if (!botToRemove) return // no active bots to remove
+    set((state) => ({
+      bots: state.bots.filter((bot) => bot !== botToRemove) // remove active bot
+    }))
+
+    return botToRemove
   },
   assignOrderToBot: (orderId: string, botId?: string) =>
     set((state) => {
@@ -96,8 +104,11 @@ export const createBotSlice: StateCreator<
         )
       }
     }),
-  totalBots: () => {
-    return get().bots.length
+  totalIdleBots: () => {
+    return get().bots.filter((bot) => !bot.currentOrderId).length
+  },
+  totalActiveBots: () => {
+    return get().bots.filter((bot) => bot.currentOrderId).length
   }
 })
 

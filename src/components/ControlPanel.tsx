@@ -4,7 +4,12 @@ import { OrderType } from '../store/OrderStore'
 export const ControlPanel = () => {
   const { handleNewOrder, handleBotIncrease, handleBotDecrease } =
     useOrderManagementStore()
-  const totalBots = useOrderManagementStore((state) => state.totalBots())
+  const totalIdleBots = useOrderManagementStore((state) =>
+    state.totalIdleBots()
+  )
+  const totalActiveBots = useOrderManagementStore((state) =>
+    state.totalActiveBots()
+  )
 
   const handleAddNewOrder = (type: OrderType) => {
     handleNewOrder(type)
@@ -53,8 +58,14 @@ export const ControlPanel = () => {
         </div>
       </div>
 
-      <div className="text-end font-normal">
-        Active Bots 🤖: <span className="text-gray-600">{totalBots}</span>
+      <div className="flex flex-col text-end font-normal">
+        <p>
+          Idle Bots 🤖: <span className="text-gray-600">{totalIdleBots}</span>
+        </p>
+        <p>
+          Active Bots 🤖:{' '}
+          <span className="text-gray-600">{totalActiveBots}</span>
+        </p>
       </div>
     </>
   )
