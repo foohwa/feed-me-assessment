@@ -113,7 +113,10 @@ const OrderProgressBar = ({ progress }: OrderProgressBarProps) => {
           {stages.map((stage) => (
             <div
               key={stage}
-              className={classNames(isActive(stage) ? 'text-green-600' : '')}
+              className={classNames(
+                'capitalize',
+                isActive(stage) ? 'text-green-600' : ''
+              )}
             >
               {stage.toLowerCase().replace('_', ' ')}
             </div>
