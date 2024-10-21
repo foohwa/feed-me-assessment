@@ -24,7 +24,7 @@ export const createBotSlice: StateCreator<
 > = (set, get) => ({
   bots: [],
   increaseBot: () => {
-    const newBot = createNewBot()
+    const newBot = createNewBot(get().bots.length)
     set((state) => ({ bots: [...state.bots, newBot] }))
     return newBot
   },
@@ -112,8 +112,12 @@ export const createBotSlice: StateCreator<
   }
 })
 
-const createNewBot = (): Bot => {
+const createNewBot = (length: number): Bot => {
+  const prefix = 'BOT'
+  const incrementalId = length.toString().padStart(2, '0')
+  const botId = `${prefix}-${incrementalId}`
+
   return {
-    id: crypto.randomUUID()
+    id: botId
   }
 }

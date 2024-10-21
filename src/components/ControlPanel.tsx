@@ -58,14 +58,23 @@ export const ControlPanel = () => {
         </div>
       </div>
 
-      <div className="flex flex-col text-end font-normal">
-        <p>
-          Idle Bots 🤖: <span className="text-gray-600">{totalIdleBots}</span>
-        </p>
-        <p>
-          Active Bots 🤖:{' '}
-          <span className="text-gray-600">{totalActiveBots}</span>
-        </p>
+      <div className="my-5 flex flex-row justify-end gap-2">
+        <div className="h-full w-40 overflow-hidden rounded-md border bg-white px-3 py-1 md:p-3">
+          <dt className=" truncate text-sm font-medium text-gray-500">
+            Active Bots 🟢
+          </dt>
+          <dd className="mt-1 font-semibold tracking-tight text-gray-900 md:text-3xl">
+            🤖 {totalActiveBots}
+          </dd>
+        </div>
+        <div className="h-full w-40 overflow-hidden rounded-md border bg-stone-100 px-3 py-1 md:p-3">
+          <dt className="truncate text-sm font-medium text-gray-500">
+            Idle Bots ⚪️
+          </dt>
+          <dd className="mt-1 font-semibold tracking-tight text-gray-900 md:text-3xl">
+            🤖 {totalIdleBots}
+          </dd>
+        </div>
       </div>
     </>
   )

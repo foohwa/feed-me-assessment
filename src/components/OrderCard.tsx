@@ -22,7 +22,7 @@ export const OrderCard = ({ order, onClick }: OrderCardProps) => {
             <div className="rounded-md border border-gray-300 p-1.5 md:p-2.5">
               <CookingPot className="size-5 stroke-gray-700" />
             </div>
-            <div className="flex flex-wrap gap-2 md:gap-1">
+            <div className="flex flex-wrap items-center gap-2 md:gap-1">
               <span className="text-sm font-normal text-gray-700">
                 # {order.id}
               </span>
@@ -33,12 +33,12 @@ export const OrderCard = ({ order, onClick }: OrderCardProps) => {
               ) : null}
             </div>
           </div>
-          <div>
-            <ProgressBadge className="shrink-0" progress={order.progress} />
+          <div className="shrink-0">
+            <ProgressBadge progress={order.progress} />
           </div>
         </div>
         <div className="px-4 py-5 sm:p-6">
-          <OrderProgressBar progress={order.progress} />
+          <OrderProgressBar progress={order.progress} botId={order.botId} />
         </div>
       </div>
     </>
@@ -76,16 +76,17 @@ const ProgressBadge = ({ progress, className }: ProgressBadgeProps) => {
 }
 
 type OrderProgressBarProps = {
+  botId: string | undefined
   progress: OrderProgress
 }
 
 const progressConfig: Record<OrderProgress, { width: string; text: string }> = {
   PENDING: { width: '0%', text: 'Waiting for Bot...' },
-  IN_PROGRESS: { width: '50%', text: 'Preparing food...' },
+  IN_PROGRESS: { width: '50%', text: 'Order being processed by ' },
   COMPLETED: { width: '100%', text: 'Order Complete!' }
 }
 
-const OrderProgressBar = ({ progress }: OrderProgressBarProps) => {
+const OrderProgressBar = ({ progress, botId }: OrderProgressBarProps) => {
   const { width, text } = progressConfig[progress]
 
   const stages: OrderProgress[] = [
@@ -101,7 +102,14 @@ const OrderProgressBar = ({ progress }: OrderProgressBarProps) => {
   return (
     <div>
       <h4 className="sr-only">Status</h4>
-      <p className="mb-2 text-sm font-medium text-gray-900">{text}</p>
+      <p className="mb-2 text-sm font-medium text-gray-900">
+        {text}{' '}
+        {progress === 'IN_PROGRESS' && botId ? (
+          <span className="inline-block rounded-md border bg-stone-50 px-1 py-0.5 font-bold">
+            🤖 {botId}
+          </span>
+        ) : null}
+      </p>
       <div aria-hidden="true">
         <div className="overflow-hidden rounded-full bg-gray-200">
           <div

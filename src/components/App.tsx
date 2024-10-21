@@ -8,7 +8,7 @@ function App() {
       <div className="col-span-2">
         <ControlPanel />
       </div>
-      <div className="mx-auto grid max-w-7xl gap-2 sm:static lg:grid-cols-2">
+      <div className="mx-auto grid max-w-7xl gap-2 lg:grid-cols-2">
         <div className="col-span-2 md:col-span-1">
           <h4 className="mb-2 text-lg font-semibold text-gray-900">
             In Progress 🕐
